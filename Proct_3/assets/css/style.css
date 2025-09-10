@@ -26,6 +26,10 @@ html {
 #main {}
 
 #header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 46px;
     background-color: #000;
 }
@@ -70,8 +74,8 @@ html {
 }
 
 #nav .subnav {
-    display: none;
     position: absolute;
+    display: none;
     top: 100%;
     min-width: 160px;
     background-color: #fff;
@@ -104,6 +108,7 @@ html {
 }
 
 #slider {
+    margin-top: 46px;
     min-height: 500px;
     background-color: #333;
 }
