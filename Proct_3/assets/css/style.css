@@ -1,0 +1,60 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*
+1. Từ ngoài vào trong (outside-in)
+2. Từ trên xuống dưới (top to bottom)
+3. Từ tổng quát đến chi tiết (general to specific)
+4. Từ trái sang phải (left to right)
+*/
+
+/*
+1. Vị trí (position)
+2. Kích thước (width, height)
+3. Màu sắc (color, background-color)
+4. Kiểu dáng (font, border, background)
+*/
+
+#main {}
+
+#header {
+    height: 46px;
+    background-color: #000;
+}
+
+#nav {}
+
+#nav li {
+    display: inline-block;
+}
+
+#nav li a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    line-height: 46px;
+    padding: 0 24px;
+}
+
+#nav li:hover a {
+    color: #000;
+    background-color: #ccc;
+}
+
+#nav .subnav {
+    display: none;
+}
+
+#slider {}
+
+#content {}
+
+#footer {}

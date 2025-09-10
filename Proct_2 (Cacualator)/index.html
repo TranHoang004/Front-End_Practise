@@ -1,0 +1,188 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: hsl(0, 0%, 94%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        background: white;
+        padding: 2rem;
+        border-radius: 20px 20px 150px 20px;
+        max-width: 500px;
+        width: 90%;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      }
+
+      .inputs {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .inputs div {
+        flex: 1;
+      }
+
+      label {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: hsl(0, 1%, 44%);
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        font-size: 18px;
+        border-radius: 6px;
+        border: 1px solid hsl(0, 0%, 86%);
+        outline: none;
+      }
+
+      input:focus {
+        border-color: hsl(259, 100%, 65%);
+      }
+
+      .error-message {
+        color: red;
+        font-size: 10px;
+        margin-top: 3px;
+      }
+
+      .divider {
+        position: relative;
+        margin: 2rem 0;
+        border-top: 1px solid hsl(0, 0%, 86%);
+      }
+
+      .btn {
+        position: absolute;
+        right: 0;
+        top: -25px;
+        background: hsl(259, 100%, 65%);
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .btn img {
+        width: 50%;
+      }
+
+      .result {
+        font-size: 3rem;
+        font-weight: 800;
+        font-style: italic;
+        line-height: 1.2;
+      }
+
+      .result span {
+        color: hsl(259, 100%, 65%);
+      }
+
+      @media (max-width: 480px) {
+        .result {
+          font-size: 2rem;
+        }
+        .btn {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="inputs">
+        <div>
+          <label for="day">Day</label>
+          <input type="number" id="day" />
+          <p class="error-message" id="day-error"></p>
+        </div>
+        <div>
+          <label for="month">Month</label>
+          <input type="number" id="month" />
+          <p class="error-message" id="month-error"></p>
+        </div>
+        <div>
+          <label for="year">Year</label>
+          <input type="number" id="year" />
+          <p class="error-message" id="year-error"></p>
+        </div>
+      </div>
+      <div class="divider">
+        <button class="btn" id="calculate-btn">
+          <img src="./assets/icon-arrow.svg" alt="Calculate" />
+        </button>
+      </div>
+      <div class="result">
+        <div><span id="years">--</span> years</div>
+        <div><span id="months">--</span> months</div>
+        <div><span id="days">--</span> days</div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("calculate-btn")
+        .addEventListener("click", function () {
+          const day = parseInt(document.getElementById("day").value);
+          const month = parseInt(document.getElementById("month").value);
+          const year = parseInt(document.getElementById("year").value);
+
+          // Validate inputs
+          if (isNaN(day) || isNaN(month) || isNaN(year)) {
+            if (isNaN(day)) {
+              document.getElementById("day-error").innerText =
+                "Please enter a valid day.";
+            }
+            if (isNaN(month)) {
+              document.getElementById("month-error").innerText =
+                "Please enter a valid month.";
+            }
+            if (isNaN(year)) {
+              document.getElementById("year-error").innerText =
+                "Please enter a valid year.";
+            }
+            return;
+          }
+
+          // Clear error messages
+          document.getElementById("day-error").innerText = "";
+          document.getElementById("month-error").innerText = "";
+          document.getElementById("year-error").innerText = "";
+
+          // Calculate age
+          const today = new Date();
+          let ageInDays =
+            (today - new Date(year, month - 1, day)) / (1000 * 60 * 60 * 24);
+          const years = Math.floor(ageInDays / 365);
+          ageInDays %= 365;
+          const months = Math.floor(ageInDays / 30);
+          const days = ageInDays % 30;
+
+          // Display result
+          document.getElementById("years").innerText = years;
+          document.getElementById("months").innerText = months;
+          document.getElementById("days").innerText = days;
+        });
+    </script>
+  </body>
+</html>
