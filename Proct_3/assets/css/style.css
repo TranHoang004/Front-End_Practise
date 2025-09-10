@@ -30,6 +30,10 @@ html {
     background-color: #000;
 }
 
+#nav {
+    display: inline-block;
+}
+
 #nav,
 .subnav {
     list-style: none;
@@ -78,6 +82,25 @@ html {
     color: #000;
     line-height: 38px;
     padding: 0px 12px;
+}
+
+#nav .nav-arrow-down {
+    font-size: 12px;
+}
+
+#header .search-btn {
+    padding: 0 21px;
+    float: right;
+}
+
+#header .search-btn:hover {
+    background-color: #e31212;
+    cursor: pointer;
+}
+
+#header .search-icon {
+    line-height: 46px;
+    color: #fff;
 }
 
 #slider {
